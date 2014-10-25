@@ -1,31 +1,148 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Page Styling */
+@backgroundColor: #FBEAD8;
+@hardOneColor: #E05069;
+@hardTwoColor: #FFA562;
+@softPrimaryColor: #CB4E7F;
+@softSecondaryColor: #B46584;
+body {
+    background: @backgroundColor;
+    font-family: monospace;
+    font-size: 15px;
+}
 section {
     position: absolute;
+}
 
-    @padding: 2%;
-    top: @padding;
-    bottom: @padding;
-
-    &#input {
-        left: @padding;
-        right: 50% + @padding;
-        textarea {
-            width: 100% - @padding;
-            height: 100% - @padding;
-        }
+@inputHeight: 1.75em;
+input[type='text'], input[type='url'], button, .button, input[type='button'], a {
+    display: inline-block;
+    height: @inputHeight;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-color: fade(white, 70%);
+    border-style: solid;
+    border-width: 0;
+    color: fade(white, 70%);
+    transition: all .1s;
+    padding: .2em;
+}
+input[type='text'], input[type='url'] {
+    padding: .25em;
+    border-bottom-width: 2px;
+    &:focus {
+        border-color: white;
+        color: white;
     }
-    &#output {
-        left: 50% + @padding;
-        right: @padding;
-        overflow-y: scroll;
+    &::-webkit-input-placeholder {
+        color: white;
+    }
+}
+button, .button, input[type='button'], a {
+    border-width: 2px;
+    padding: .2em .4em;
+    color: fade(white, 70%);
+    &:hover, &:active {
+        color: white;
+    }
+    &:active {
+        border-color: white; 
     }
 }
 
+@ctrlTopOffset: 1em;
+@ctrlPadding: .5em;
+@boxShadowWidth: .33em;
+#input-controls {
+    background: #66ADAF;
+    box-shadow: 0px @boxShadowWidth 0 fade(#66ADAF, 50%);
+    padding: @ctrlPadding;
+    top: @ctrlTopOffset;
+    left: @padding;
+    right: @padding;
+
+    .json-url {
+        input {
+            width: 30%;
+        }
+        &.error input, input.ng-invalid-url {
+            color: red;
+        }
+    }
+
+    .json-file {
+        input[type='file'] {
+            visibility: hidden;
+        }
+    }
+
+    .github {
+        float: right;
+        text-decoration: none;
+    }
+}
+
+@padding: 2%;
+#input, #output {
+    top: @ctrlTopOffset + @ctrlPadding * 2 + @inputHeight + @boxShadowWidth + @ctrlTopOffset;
+    bottom: @padding;
+}
+
+#input {
+    left: @padding;
+    right: 50% + @padding;
+    background: @hardOneColor;
+    box-shadow: @boxShadowWidth @boxShadowWidth 0 fade(@hardOneColor, 50%);
+    textarea {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        resize: none;
+        border: none;
+        padding: 1em;
+        color: white;
+        background: transparent;
+    }
+    &.error {
+        textarea {
+            box-shadow: inset 0 0 0 4px red;
+        }
+    }
+    .error-modal {
+        position: absolute;
+        top: 4em;
+        left: 10%;
+        right: 10%;
+        padding: 1.5em;
+
+        background: @softPrimaryColor;
+        box-shadow: 0 4px 10px fade(black, 20%);
+        color: white;
+    }
+}
+#output {
+    left: 50% + @padding;
+    right: @padding;
+    overflow-y: scroll;
+    padding: 1em;
+    background: @hardTwoColor;
+    box-shadow: -@boxShadowWidth @boxShadowWidth 0 fade(@hardTwoColor, 50%);
+}
+
+/* Json Tree Styling */
 json-tree {
     ul {
         padding-left: 30px;
         margin: 0;
-        border-radius: 4px;
-        background: rgba(0,0,0,.05);
+        background: rgba(255,255,255,.1);
     }
     li, ul {
         list-style: none;
@@ -34,7 +151,7 @@ json-tree {
         line-height: 1.5em;
     }
     .key {
-        color: #D02828;
+        color: @softPrimaryColor;
         vertical-align: middle;
         padding: 5px 10px 5px 15px;
         &::after {
