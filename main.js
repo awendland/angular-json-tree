@@ -1,3 +1,10 @@
+/*
+ * Other JSON resources:
+ *  - http://beta.json-generator.com/
+ *  - http://jsbeautifier.org/
+ *  - http://jsonlint.com/
+ */
+
 angular.module('jsonTreeDemo', ['angular-json-tree'])
 	.controller('DemoCtrl', ['$scope', '$http', function ($scope, $http) {
 		$scope.json = {};
