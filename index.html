@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JSON Tree</title>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+	<link rel="stylesheet/less" type="text/css" href="styles.less" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js"></script>
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body ng-app="jsonTreeDemo" ng-controller="DemoCtrl">
+
+	<textarea id="input" ng-model="jsonString"></textarea>
+	<json-tree object="::getJson()" start-expanded="true"></json-tree>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+	<script src="https://rawgit.com/awendland/angular-json-tree/master/build/angular-json-tree.min.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
