@@ -13,8 +13,16 @@
 
 <body ng-app="jsonTreeDemo" ng-controller="DemoCtrl">
 
-	<textarea id="input" ng-model="jsonString"></textarea>
-	<json-tree object="::getJson()" start-expanded="true"></json-tree>
+	<section id="input">
+		<div class="json-url">
+			<input ng-model="jsonUrl" type="text">
+			<button ng-click="loadUrl()">Load JSON</button>
+		</div>
+		<textarea ng-model="jsonString"></textarea>
+	</section>
+	<section id="output">
+		<json-tree object="json" start-expanded="true"></json-tree>
+	</section>
 	
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
 	<script src="https://rawgit.com/awendland/angular-json-tree/master/build/angular-json-tree.min.js"></script>

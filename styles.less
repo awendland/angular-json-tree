@@ -1,6 +1,31 @@
+section {
+    position: absolute;
+
+    @padding: 2%;
+    top: @padding;
+    bottom: @padding;
+
+    &#input {
+        left: @padding;
+        right: 50% + @padding;
+        textarea {
+            width: 100% - @padding;
+            height: 100% - @padding;
+        }
+    }
+    &#output {
+        left: 50% + @padding;
+        right: @padding;
+        overflow-y: scroll;
+    }
+}
+
 json-tree {
     ul {
-        padding-left: 20px;
+        padding-left: 30px;
+        margin: 0;
+        border-radius: 4px;
+        background: rgba(0,0,0,.05);
     }
     li, ul {
         list-style: none;
@@ -36,13 +61,16 @@ json-tree {
     }
     .preview {
         font-style: italic;
-        max-width: 40%;
+        max-width: 60%;
         word-break: break-all;
         overflow: hidden;
         height: 1.5em;
         display: inline-block;
         vertical-align: middle;
         opacity: .7;
+        &::after {
+            content: '...';
+        }
     }
     .Array {
         counter-reset: array-index;
