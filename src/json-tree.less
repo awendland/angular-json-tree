@@ -1,0 +1,59 @@
+json-tree {
+    ul {
+        padding-left: 20px;
+    }
+    li, ul {
+        list-style: none;
+    }
+    li {
+        line-height: 1.5em;
+    }
+    .key {
+        color: #D02828;
+        vertical-align: middle;
+        padding: 5px 10px 5px 15px;
+        &::after {
+            content: ':';
+        }
+    }
+    .expandable {
+        position: relative;
+        &::before {
+            pointer-events: none;
+            content: '\25b6';
+            font-size: 10px;
+            position: absolute;
+            top: 0;
+            left: 0px;
+            transition: transform .1s ease;
+        }
+        &.expanded::before {
+            transform: rotate(90deg);
+        }
+        &::before, & > .key {
+            cursor: pointer;
+        }
+    }
+    .preview {
+        font-style: italic;
+        max-width: 40%;
+        word-break: break-all;
+        overflow: hidden;
+        height: 1.5em;
+        display: inline-block;
+        vertical-align: middle;
+        opacity: .7;
+    }
+    .Array {
+        counter-reset: array-index;
+        & > li:not(.expandable):before {
+            content: counter(array-index)'.';
+            counter-increment: array-index;
+            margin-right: 10px;
+            color: #999;
+            font-size: .9em;
+            width: 30px;
+            display: inline-block;
+        }
+    }
+}
