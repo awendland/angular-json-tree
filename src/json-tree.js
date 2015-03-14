@@ -96,9 +96,9 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                 return ajsRecursiveDirectiveHelper.compile(elem, this);
             },
             template: ' <span class="key" ng-click="toggleExpanded()">{{key}}</span>' +
-                '       <span ng-if="!isExpandable">{{value}}</span>' +
-                '       <span class="preview" ng-if="isExpandable" ng-show="!isExpanded" ng-click="toggleExpanded()">{{preview}}</span>' +
-                '       <ul ng-if="isExpandable && shouldRender" ng-show="isExpanded">' +
+                '       <span class="leaf-value" ng-if="!isExpandable">{{value}}</span>' +
+                '       <span class="branch-preview" ng-if="isExpandable" ng-show="!isExpanded" ng-click="toggleExpanded()">{{preview}}</span>' +
+                '       <ul class="branch-value" ng-if="isExpandable && shouldRender" ng-show="isExpanded">' +
                 '           <li ng-repeat="(subkey,subval) in value">' +
                 '               <json-node key="subkey" value="subval"></json-node>' +
                 '           </li>' +
@@ -141,6 +141,8 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                     };
                 } else {
                     scope.isExpandable = false;
+                    // Add expandable class for CSS usage
+                    elem.addClass('not-expandable');
                 }
             }
         };
