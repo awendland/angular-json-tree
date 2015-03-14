@@ -138,68 +138,19 @@ button, .button, input[type='button'], a {
     box-shadow: -@boxShadowWidth @boxShadowWidth 0 fade(@hardTwoColor, 50%);
 }
 
-/* Json Tree Styling */
+/* Json Tree Looks */
 json-tree {
     ul {
-        padding-left: 30px;
         margin: 0;
         background: rgba(255,255,255,.1);
     }
-    li, ul {
-        list-style: none;
-    }
-    li {
-        line-height: 1.5em;
-    }
     .key {
         color: @softPrimaryColor;
-        vertical-align: middle;
-        padding: 5px 10px 5px 15px;
-        &::after {
-            content: ':';
-        }
     }
-    .expandable {
-        position: relative;
-        &::before {
-            pointer-events: none;
-            content: '\25b6';
-            font-size: 10px;
-            position: absolute;
-            top: 0;
-            left: 0px;
-            transition: transform .1s ease;
-        }
-        &.expanded::before {
-            transform: rotate(90deg);
-        }
-        &::before, & > .key {
-            cursor: pointer;
-        }
-    }
-    .preview {
-        font-style: italic;
+    .branch-preview {
         max-width: 60%;
-        word-break: break-all;
-        overflow: hidden;
-        height: 1.5em;
-        display: inline-block;
-        vertical-align: middle;
-        opacity: .7;
         &::after {
             content: '...';
-        }
-    }
-    .Array {
-        counter-reset: array-index;
-        & > li:not(.expandable):before {
-            content: counter(array-index)'.';
-            counter-increment: array-index;
-            margin-right: 10px;
-            color: #999;
-            font-size: .9em;
-            width: 30px;
-            display: inline-block;
         }
     }
 }
