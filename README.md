@@ -4,6 +4,8 @@ This plugin was created to address a common development issue: how to easily vis
 
 This is nice and easy because all you should have to do is include the directive in your app, and then pass a reference to the directive of which object on the scope you want it to display.
 
+A live implementation of this directive can be found at [http://blog.alexwendland.com/angular-json-tree/](http://blog.alexwendland.com/angular-json-tree/) and the source for that project can be found on the [gh-pages branch](https://github.com/awendland/angular-json-tree/tree/gh-pages).
+
 **Requirements:** AngularJS 1.2+
 
 **File Size (js + css):** 3.40Kb minified, 1.46Kb gzipped
