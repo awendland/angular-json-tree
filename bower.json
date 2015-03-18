@@ -5,7 +5,7 @@
     "Alex Wendland <me@alexwendland.com>"
   ],
   "description": "Angular directive for displaying a JSON object in an expandable tree structure",
-  "main": "src/angular-json-tree.js",
+  "main": "src/json-tree.js",
   "keywords": [
     "angular",
     "angularjs",
