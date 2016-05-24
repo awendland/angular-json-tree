@@ -125,4 +125,4 @@ Also, thank you to [chieffancypants](https://github.com/chieffancypants/) for hi
 
 ## License:
 
-Licensed under the MIT license. Attributions appreciated :)
+Licensed under the Creative Commons Attribution 4.0 International (CC-BY-4.0)
