@@ -1,6 +1,6 @@
 {
   "name": "angular-json-tree",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular directive for displaying a JSON object in an expandable tree structure",
   "main": [
     "dist/angular-json-tree.js",
