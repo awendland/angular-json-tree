@@ -8,7 +8,10 @@ A live implementation of this directive can be found at [http://blog.alexwendlan
 
 **Requirements:** AngularJS 1.2+
 
-**File Size (js + css):** 3.40Kb minified, 1.46Kb gzipped
+**File Size:** v1.0.1
+
+  * **JS**: 8.3Kb raw, 2.3Kb minified, 982b gzipped
+  * **JS + CSS**: 9.6Kb raw, 3.3Kb minified, 1.42Kb gzipped
 
 ## Usage:
 
