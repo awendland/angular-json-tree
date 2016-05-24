@@ -47,8 +47,10 @@ json-tree json-node.expandable::before {
   position: absolute;
   left: 0px;
   font-size: 10px;
+  -webkit-transition: -webkit-transform .1s ease;
   transition: -webkit-transform .1s ease;
   transition: transform .1s ease;
+  transition: transform .1s ease, -webkit-transform .1s ease;
 }
 json-tree json-node.expandable.expanded::before {
   -webkit-transform: rotate(90deg);

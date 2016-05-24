@@ -69,6 +69,14 @@ This is an optional attribute that designates if the tree's root should display 
 <json-tree object="someobj" start-expanded="true"></json-tree>
 ```
 
+### root-name [optional, default='Object']
+
+This is an optional attribute that sets the title displayed at the root node. This is useful when you are showing sub-portions of an object or want the object root node to have a different string than 'Object'.
+
+```html
+<json-tree object="someobj" root-name="'Name'"></json-tree>
+```
+
 ## Styling
 
 The default CSS is separated into two parts: structure and looks. The looks section can be easily modified in order to change font, color and toggle buttons. The structure section can also be modified, but some more care will be needed because it provides the framework from which this directive provides functionality. The looks framework will be covered here while the structure framework will only be touched on.
@@ -116,6 +124,18 @@ Additionally, `json-node` elements receive a class corresponding to their object
 ## Further Explanation:
 
 An example implementation of this project can be found at the [gh-pages branch](https://github.com/awendland/angular-json-tree/tree/gh-pages) of this repository.
+
+## Changelog
+
+#### v1.0.0
+  * Update *npm* dev dependencies to latest (as of 2016-05-24) and remove unnecessary ones
+  * Update *angular* dependency to accept all 1.x versions
+  * Set `main` in bower.json and package.json properly so that this package can easily be included in *bower* and *npm* managed projects ([Issue #7](https://github.com/awendland/angular-json-tree/issues/7), [PR #1](https://github.com/awendland/angular-json-tree/pull/1))
+  * Allow setting the name of the root node ([Issue #5](https://github.com/awendland/angular-json-tree/issues/5))
+    * This can be done setting the `root-name` attribute on the directive. An evaluatable expression must be provided, such as `root-name="'My name'"`.
+
+#### v0.0.1
+  * Initial release
 
 ## Credits:
 

@@ -79,9 +79,10 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
             restrict: 'E',
             scope: {
                 object: '=',
-                startExpanded: '&?'
+                startExpanded: '&?',
+                rootName: '&?',
             },
-            template: '<json-node key="\'Object\'" value="object" start-expanded="startExpanded()"></json-node>'
+            template: '<json-node key="rootName() || \'Object\'" value="object" start-expanded="startExpanded()"></json-node>'
         };
     }])
     .directive('jsonNode', ['ajsRecursiveDirectiveHelper', function jsonNodeDirective(ajsRecursiveDirectiveHelper) {
