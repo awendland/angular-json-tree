@@ -1,31 +1,56 @@
 {
   "name": "angular-json-tree",
-  "version": "0.0.1",
-  "dependencies": {},
+  "version": "1.0.0",
+  "description": "Angular directive for displaying a JSON object in an expandable tree structure",
+  "main": [
+    "dist/angular-json-tree.js",
+    "dist/angular-json-tree.css"
+  ],
+  "directories": {
+    "test": "test"
+  },
   "devDependencies": {
-    "gulp": "^3.8.9",
-    "gulp-autoprefixer": "^0.0.8",
+    "angular-mocks": "^1.5.5",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-bower-files": "^0.2.7",
-    "gulp-cache": "^0.2.0",
-    "gulp-concat": "^2.3.4",
-    "gulp-jshint": "^1.8.4",
-    "gulp-karma": "^0.0.4",
-    "gulp-less": "^1.3.3",
-    "gulp-load-plugins": "^0.5.3",
-    "gulp-plumber": "^0.6.4",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^2.0.1",
+    "gulp-less": "^3.1.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.0",
-    "gulp-rimraf": "^0.1.0",
-    "gulp-size": "^1.0.0",
-    "gulp-uglify": "^0.3.1",
-    "jshint-stylish": "^0.4.0",
-    "karma-jasmine": "^0.1.5",
-    "streamqueue": "^0.1.1",
-    "uglify-save-license": "^0.4.1"
+    "gulp-size": "^2.1.0",
+    "gulp-uglify": "^1.5.3",
+    "jasmine": "^2.4.1",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^1.0.2"
+  },
+  "dependencies": {
+    "angular": "1.x"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "test": "node_modules/karma/bin/karma start"
   },
   "engines": {
     "node": ">=0.10.0"
   },
-  "scripts": {
-    "test": "gulp test"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awendland/angular-json-tree.git"
+  },
+  "keywords": [
+    "angular",
+    "json"
+  ],
+  "author": "Alex Wendland <me@alexwendland.com>",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/awendland/angular-json-tree/issues"
+  },
+  "homepage": "https://github.com/awendland/angular-json-tree#readme"
 }

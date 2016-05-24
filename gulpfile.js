@@ -3,8 +3,8 @@
 var gulp = require('gulp');
 
 var $ = require('gulp-load-plugins')();
-var saveLicense = require('uglify-save-license');
-var streamqueue = require('streamqueue');
+var karma = require('karma');
+var del = require('del');
 
 gulp.task('default', function () {
     var c = {
@@ -13,13 +13,12 @@ gulp.task('default', function () {
         green: '\x1b[32m',
         magenta: '\x1b[35m'
     };
-    
+
     console.log('');
     console.log(c.green + c.bold + 'Main Commands' + c.reset);
     console.log(c.green + '-------------------------------------------' + c.reset);
-    console.log(c.green + 'clean' + c.reset + ' - delete the build/ folder.');
-    console.log(c.green + 'build' + c.reset + ' - execute the release build and output into the build/ folder.');
-    console.log(c.green + 'test' + c.reset + ' - run the karma tests located in test/unit/');
+    console.log(c.green + 'clean' + c.reset + ' - delete the dist/ folder.');
+    console.log(c.green + 'build' + c.reset + ' - execute the release build and output into the dist/ folder.');
     console.log('');
     console.log(c.green + c.bold + 'All Commands' + c.reset);
     console.log(c.green + '-------------------------------------------' + c.reset);
@@ -35,9 +34,9 @@ gulp.task('build:styles', function () {
         .pipe($.plumber())
         .pipe($.concat('angular-json-tree.css'))
         .pipe($.less())
-        .pipe($.autoprefixer('last 1 version'))
-        .pipe(gulp.dest('build'))
-        .pipe($.size());
+        .pipe($.autoprefixer({ browsers: ['> 1%'] }))
+        .pipe($.size({ title: 'CSS:' }))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('build:scripts', function () {
@@ -45,48 +44,24 @@ gulp.task('build:scripts', function () {
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
         .pipe($.concat('angular-json-tree.js'))
-        .pipe(gulp.dest('build'))
-        .pipe($.size());
+        .pipe($.size({ title: 'JS:' }))
+        .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build:scripts:min', ['build:scripts', 'clean:scripts:min'], function () {
-    return gulp.src('build/**/*.js')
+gulp.task('build:scripts:min', ['build:scripts'], function () {
+    return gulp.src('dist/**/*.js')
         .pipe($.uglify({
-            preserveComments: saveLicense
+            preserveComments: 'license'
         }))
         .pipe($.rename({extname: ".min.js"}))
-        .pipe(gulp.dest('build'))
-        .pipe($.size());
+        .pipe($.size({ title: 'JS min:' }))
+        .pipe(gulp.dest('dist'));
 })
 
-gulp.task('build', ['build:styles', 'build:scripts', 'build:scripts:min']);
-
-gulp.task('clean', function () {
-    return gulp.src(['build'], {
-        read: false
-    }).pipe($.rimraf());
+gulp.task('build', ['clean'], function (done) {
+    return gulp.start(['build:styles', 'build:scripts:min']);
 });
 
-gulp.task('clean:scripts:min', function () {
-    return gulp.src('build/**/*.min.js', {
-            read: false
-        }).pipe($.rimraf());
-})
-
-gulp.task('test', function () {
-
-    var testFiles = streamqueue({
-            objectMode: true
-        },
-        gulp.src('bower_components/angular/angular.js'),
-        gulp.src('bower_components/angular-mocks/angular-mocks.js'),
-        gulp.src('src/**/*.js'),
-        gulp.src('test/unit/**/*.js')
-    );
-
-    return testFiles
-        .pipe($.karma({
-            configFile: 'test/karma.conf.js',
-            action: 'run'
-        }));
+gulp.task('clean', function () {
+    return del(['dist/']);
 });
