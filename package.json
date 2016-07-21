@@ -27,7 +27,7 @@
     "karma-jasmine": "^1.0.2"
   },
   "dependencies": {
-    "angular": "1.x"
+    "angular": "1.2.30"
   },
   "scripts": {
     "build": "gulp build",
