@@ -36,7 +36,7 @@
 	</section>
 	<section id="input" ng-class="{'error': error}">
 		<div class="error-modal" ng-show="error.show"><p class="info">{{error.message}}</p><button class="close" ng-click="error.show = false">Close</button></div>
-		<textarea ng-model="json.string"></textarea>
+		<textarea ng-model="json.string" ng-keyup="handleError($event, json.string)"></textarea>
 	</section>
 	<section id="output">
 		<json-tree object="json.object" start-expanded="true"></json-tree>
