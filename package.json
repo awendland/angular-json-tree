@@ -34,7 +34,7 @@
     "test": "node_modules/karma/bin/karma start"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">= 4"
   },
   "repository": {
     "type": "git",
