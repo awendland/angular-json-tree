@@ -12,7 +12,7 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-bower-files": "^0.2.7",
-    "gulp-concat": "^2.5.2",
+    "gulp-concat": "^2.6.1",
     "gulp-jshint": "^2.0.1",
     "gulp-less": "^3.1.0",
     "gulp-load-plugins": "^1.2.4",
