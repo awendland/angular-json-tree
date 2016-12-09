@@ -24,7 +24,7 @@
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.2.0",
     "karma": "^0.13.22",
-    "karma-jasmine": "^1.0.2"
+    "karma-jasmine": "^1.1.0"
   },
   "dependencies": {
     "angular": "1.x"
