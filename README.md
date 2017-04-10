@@ -66,7 +66,7 @@ The object property takes the name of an object on the $scope. This object will 
 
 ### start-expanded [optional, default=false]
 
-This is an optional attribute that designates if the tree's root should display as expanded initially. This is useful when you are only showing one json-tree, but would probably be set to false if json-trees were being created with an ng-repeat loop.
+This is an optional attribute that designates if elements should display as expanded initially.
 
 ```html
 <json-tree object="someobj" start-expanded="true"></json-tree>
