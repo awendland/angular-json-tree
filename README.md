@@ -94,7 +94,7 @@ The json-tree is based on recursive nodes of two basic structures. The first str
     <span class="leaf-value">{{value}}</span>
 </json-node>
 ```
-In the default CSS, all `.key` elements have the same style, a bold red color. There is some padding, and then the property's value follows. By default, no special styling is applied to `.lead-value` elements.
+In the default CSS, all `.key` elements have the same style, a bold red color. There is some padding, and then the property's value follows. By default, no special styling is applied to `.leaf-value` elements.
 
 ### Branch Nodes
 
