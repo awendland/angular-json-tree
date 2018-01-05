@@ -110,8 +110,10 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                 // If the value is an Array or Object, use expandable view type
                 if (utils.is(scope.value, 'Object') || utils.is(scope.value, 'Array')) {
                     scope.isExpandable = true;
-                    // Add expandable class for CSS usage
-                    elem.addClass('expandable');
+                    // Add expandable class for CSS usage, but only if there's something to expand
+                    if ((utils.is(scope.value, 'Object') && Object.keys(scope.value).length > 0) || (utils.is(scope.value, 'Array') && scope.value.length > 0)) {
+                        elem.addClass('expandable');
+                    }
                     // Setup preview text
                     var isArray = utils.is(scope.value, 'Array');
                     scope.preview = isArray ? '[ ' : '{ ';
