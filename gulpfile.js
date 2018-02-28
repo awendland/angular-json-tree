@@ -32,7 +32,7 @@ gulp.task('build:styles', function () {
             'src/**/*.less'
         ])
         .pipe($.plumber())
-        .pipe($.concat('angular-json-tree.css'))
+        .pipe($.concat('angular-jason-tree.css'))
         .pipe($.less())
         .pipe($.autoprefixer({ browsers: ['> 1%'] }))
         .pipe($.size({ title: 'CSS:' }))
@@ -43,7 +43,7 @@ gulp.task('build:scripts', function () {
     return gulp.src('src/**/*.js')
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
-        .pipe($.concat('angular-json-tree.js'))
+        .pipe($.concat('angular-jason-tree.js'))
         .pipe($.size({ title: 'JS:' }))
         .pipe(gulp.dest('dist'));
 });

@@ -1,8 +1,10 @@
 /*global angular */
 
-/** Created by: Alex Wendland (me@alexwendland.com), 2014-08-06
+/** Forked by: Jason Sherman (jsherman@logicalsoftware.co), 2017-sometime in Nov/Dec
  *
- *  angular-json-tree
+ *  Created by: Alex Wendland (me@alexwendland.com), 2014-08-06
+ *
+ *  angular-jason-tree
  *
  *  Directive for creating a tree-view out of a JS Object. Only loads
  *  sub-nodes on demand in order to improve performance of rendering large
@@ -19,13 +21,13 @@
  *          array: [1,1,2,3,5,8]
  *      };
  *      // In the html
- *      <json-tree object="someObject"></json-tree>
+ *      <jason-tree object="someObject"></jason-tree>
  *
  *  Dependencies:
- *      - utils (json-tree.js)
- *      - ajsRecursiveDirectiveHelper (json-tree.js)
+ *      - utils (jason-tree.js)
+ *      - ajsRecursiveDirectiveHelper (jason-tree.js)
  *
- *  Test: json-tree-test.js
+ *  Test: jason-tree-test.js
  */
 (function() {
 'use strict';
@@ -73,8 +75,8 @@ var utils = {
     }
 };
 
-angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
-    .directive('jsonTree', [function jsonTreeDirective() {
+angular.module('angular-jason-tree', ['ajs.RecursiveDirectiveHelper'])
+    .directive('jasonTree', [function jasonTreeDirective() {
         return {
             restrict: 'E',
             scope: {
@@ -82,10 +84,10 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                 startExpanded: '&?',
                 rootName: '&?',
             },
-            template: '<json-node key="rootName() || \'Object\'" value="object" start-expanded="startExpanded()"></json-node>'
+            template: '<jason-node key="rootName() || \'Object\'" value="object" start-expanded="startExpanded()"></jason-node>'
         };
     }])
-    .directive('jsonNode', ['ajsRecursiveDirectiveHelper', function jsonNodeDirective(ajsRecursiveDirectiveHelper) {
+    .directive('jasonNode', ['ajsRecursiveDirectiveHelper', function jasonNodeDirective(ajsRecursiveDirectiveHelper) {
         return {
             restrict: 'E',
             scope: {
@@ -93,7 +95,7 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                 value: '=',
                 startExpanded: '&?'
             },
-            compile: function jsonNodeDirectiveCompile(elem) {
+            compile: function jasonNodeDirectiveCompile(elem) {
                 return ajsRecursiveDirectiveHelper.compile(elem, this);
             },
             template: ' <span class="key" ng-click="toggleExpanded()">{{key}}</span>' +
@@ -101,10 +103,10 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                 '       <span class="branch-preview" ng-if="isExpandable" ng-show="!isExpanded" ng-click="toggleExpanded()">{{preview}}</span>' +
                 '       <ul class="branch-value" ng-if="isExpandable && shouldRender" ng-show="isExpanded">' +
                 '           <li ng-repeat="(subkey,subval) in value">' +
-                '               <json-node key="subkey" value="subval"></json-node>' +
+                '               <jason-node key="subkey" value="subval"></jason-node>' +
                 '           </li>' +
                 '       </ul>',
-            pre: function jsonNodeDirectiveLink(scope, elem, attrs) {
+            pre: function jasonNodeDirectiveLink(scope, elem, attrs) {
                 // Set value's type as Class for CSS styling
                 elem.addClass(utils.whatClass(scope.value).toLowerCase());
                 // If the value is an Array or Object, use expandable view type
@@ -117,7 +119,7 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                     // Setup preview text
                     var isArray = utils.is(scope.value, 'Array');
                     scope.preview = isArray ? '[ ' : '{ ';
-                    utils.forKeys(scope.value, function jsonNodeDirectiveLinkForKeys(key, value) {
+                    utils.forKeys(scope.value, function jasonNodeDirectiveLinkForKeys(key, value) {
                         if (isArray) {
                             scope.preview += value + ', ';
                         } else {
@@ -132,7 +134,7 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                     }
                     // Setup isExpanded state handling
                     scope.isExpanded = scope.startExpanded ? scope.startExpanded() : false;
-                    scope.toggleExpanded = function jsonNodeDirectiveToggleExpanded() {
+                    scope.toggleExpanded = function jasonNodeDirectiveToggleExpanded() {
                         scope.isExpanded = !scope.isExpanded;
                         if (scope.isExpanded) {
                             elem.addClass('expanded');

@@ -1,10 +1,10 @@
-describe('The json-tree directive', function () {
+describe('The jason-tree directive', function () {
     'use strict';
 
     var scope, compile;
 
     beforeEach(function () {
-        module('angular-json-tree');
+        module('angular-jason-tree');
         inject(function ($compile, $rootScope) {
             scope = $rootScope.$new();
             compile = $compile;
@@ -19,8 +19,8 @@ describe('The json-tree directive', function () {
         };
     });
 
-    var unexpandedHtml = '<json-tree object="someObject"><json-tree>';
-    var expandedHtml = '<json-tree object="someObject" start-expanded="true"><json-tree>';
+    var unexpandedHtml = '<jason-tree object="someObject"><jason-tree>';
+    var expandedHtml = '<jason-tree object="someObject" start-expanded="true"><jason-tree>';
 
     it('should generate an un-expanded tree', function () {
         var html = unexpandedHtml;

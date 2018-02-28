@@ -1,20 +1,22 @@
 {
-  "name": "angular-json-tree",
+  "name": "angular-jason-tree",
   "version": "1.0.1",
   "description": "Angular directive for displaying a JSON object in an expandable tree structure",
   "main": [
-    "dist/angular-json-tree.js",
-    "dist/angular-json-tree.css"
+    "dist/angular-jason-tree.js",
+    "dist/angular-jason-tree.css"
   ],
   "authors": [
+    "Jason Sherman <jsherman@logicalsoftware.co>",
     "Alex Wendland <me@alexwendland.com>"
   ],
   "license": "CC-BY-4.0",
   "keywords": [
     "angular",
-    "json"
+    "json",
+    "jason"
   ],
-  "homepage": "https://github.com/awendland/angular-json-tree",
+  "homepage": "https://github.com/logicalsoftware/angular-JaSON-tree",
   "ignore": [
     "**/.*",
     "node_modules",
