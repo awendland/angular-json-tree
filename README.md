@@ -8,10 +8,10 @@ A live implementation of this directive can be found at [https://awendland.githu
 
 **Requirements:** AngularJS 1.2+
 
-**File Size:** v1.0.1
+**File Size:** v1.1.0
 
-  * **JS**: 8.3Kb raw, 2.3Kb minified, 982b gzipped
-  * **JS + CSS**: 9.6Kb raw, 3.3Kb minified, 1.42Kb gzipped
+  * **JS**: 9.15kB raw, 2.56kB minified, 1.04kB gzipped
+  * **JS + CSS**: 10.28kB raw, 3.69kB minified, 1.53kB gzipped
 
 ## Usage:
 
@@ -72,6 +72,8 @@ This is an optional attribute that designates if the tree's root should display 
 <json-tree object="someobj" start-expanded="true"></json-tree>
 ```
 
+Besides `true` or `false`, you can also set it to `'recursive'` to cause the entire tree to be expanded initially (instead of just the top level if `true` was used).
+
 ### root-name [optional, default='Object']
 
 This is an optional attribute that sets the title displayed at the root node. This is useful when you are showing sub-portions of an object or want the object root node to have a different string than 'Object'.
@@ -122,6 +124,8 @@ The expanded state is different and contains further subnodes that are generated
 ```
 The `.expandable` class adds several features to the normal `json-node` element. Particularly, by the default looks CSS, a carrot-style toggle pseudo-element will be created. This `::before` element will rotate 90 deg downward when the element is expanded.
 
+Furthermore, if an `.expandable` element does not have any children, then `.empty` will be added to the class list as well. This can be used to remove any expansion UI from nodes representing empty objects/arrays.
+
 Additionally, `json-node` elements receive a class corresponding to their object type. For example, the `.array` class or `.object` may be placed on a `json-node`. These classes can be used for special stylings.
 
 ## Further Explanation:
@@ -129,6 +133,15 @@ Additionally, `json-node` elements receive a class corresponding to their object
 An example implementation of this project can be found at the [gh-pages branch](https://github.com/awendland/angular-json-tree/tree/gh-pages) of this repository.
 
 ## Changelog
+
+#### v1.1.0
+  * Set *angular* as a peer dependency instead of as a normal dependency (allowing for better user control of the *angular* version) ([Issue #52](https://github.com/awendland/angular-json-tree/issues/52))
+  * Add `start-expanded="'recursive'"` to cause the entire tree to be expanded initially (instead of just the top-level, which setting the value to `true` previously allowed) ([Issue #56](https://github.com/awendland/angular-json-tree/issues/56))
+  * Add `track by` to remove `$$hashKey` attributes ([Issue #59](https://github.com/awendland/angular-json-tree/issues/59), [PR #60](https://github.com/awendland/angular-json-tree/pull/60))
+  * Add `.empty` to the class list of nodes that are expandable but have no children ([Issue #63](https://github.com/awendland/angular-json-tree/issues/63))
+
+#### v1.0.1
+  * Remove css files from the `main` entry in package.json.
 
 #### v1.0.0
   * Update *npm* dev dependencies to latest (as of 2016-05-24) and remove unnecessary ones

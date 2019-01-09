@@ -100,7 +100,7 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                 '       <span class="leaf-value" ng-if="!isExpandable">{{value}}</span>' +
                 '       <span class="branch-preview" ng-if="isExpandable" ng-show="!isExpanded" ng-click="toggleExpanded()">{{preview}}</span>' +
                 '       <ul class="branch-value" ng-if="isExpandable && shouldRender" ng-show="isExpanded">' +
-                '           <li ng-repeat="(subkey,subval) in value">' +
+                '           <li ng-repeat="(subkey,subval) in value track by subkey">' +
                 '               <json-node key="subkey" value="subval"></json-node>' +
                 '           </li>' +
                 '       </ul>',
@@ -112,6 +112,10 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                     scope.isExpandable = true;
                     // Add expandable class for CSS usage
                     elem.addClass('expandable');
+                    // Add a class indicating an empty Object/Array (for removing expandable UI, if desired)
+                    if (Object.keys(scope.value).length < 1) {
+                      elem.addClass('empty');
+                    }
                     // Setup preview text
                     var isArray = utils.is(scope.value, 'Array');
                     scope.preview = isArray ? '[ ' : '{ ';
@@ -123,6 +127,11 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                         }
                     });
                     scope.preview = scope.preview.substring(0, scope.preview.length - (scope.preview.length > 2 ? 2 : 0)) + (isArray ? ' ]' : ' }');
+                    // If parent directive has startExpanded set to recursive, inherit startExpanded
+                    if (scope.$parent && scope.$parent.startExpanded &&
+                          scope.$parent.startExpanded() == 'recursive') {
+                      scope.startExpanded = scope.$parent.startExpanded;
+                    }
                     // If directive initially has isExpanded set, also set shouldRender to true
                     if (scope.startExpanded && scope.startExpanded()) {
                         scope.shouldRender = true;
@@ -130,6 +139,7 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                     }
                     // Setup isExpanded state handling
                     scope.isExpanded = scope.startExpanded ? scope.startExpanded() : false;
+                    if (scope.isExpanded == 'recursive') scope.isExpanded = true;
                     scope.toggleExpanded = function jsonNodeDirectiveToggleExpanded() {
                         scope.isExpanded = !scope.isExpanded;
                         if (scope.isExpanded) {
