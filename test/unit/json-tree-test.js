@@ -21,6 +21,7 @@ describe('The json-tree directive', function () {
 
     var unexpandedHtml = '<json-tree object="someObject"><json-tree>';
     var expandedHtml = '<json-tree object="someObject" start-expanded="true"><json-tree>';
+    var recursiveExpandedHtml = '<json-tree object="someObject" start-expanded="\'recursive\'"><json-tree>';
 
     it('should generate an un-expanded tree', function () {
         var html = unexpandedHtml;
@@ -36,6 +37,18 @@ describe('The json-tree directive', function () {
         compile(elem)(scope);
         scope.$digest();
         expect(elem.html()).toMatch(/.+?<ul .+?>/);
+        expect(elem[0].querySelectorAll('json-node.expanded').length).toEqual(1);
+    });
+
+    it('should generate a recursively expanded tree', function () {
+        var html = recursiveExpandedHtml;
+        var elem = angular.element(html);
+        compile(elem)(scope);
+        scope.$digest();
+        var expanded = elem[0].querySelectorAll('json-node.expanded');
+        var expandable = elem[0].querySelectorAll('json-node.expandable');
+        expect(expandable.length).toBeGreaterThan(1);
+        expect(expanded.length).toEqual(expandable.length);
     });
 
     it('should have no subnodes until click', function () {
