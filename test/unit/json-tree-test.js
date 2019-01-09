@@ -12,9 +12,11 @@ describe('The json-tree directive', function () {
         scope.someObject = {
             test: 'hello',
             array: [1,1,2,3,5,8],
+            emptyArray: [],
+            emptyObject: {},
             subObj: {
                 subTest: 'hi',
-                subArray: [2,1,3,4,7,11]
+                subArray: [2,1,3,4,7,11],
             }
         };
     });
@@ -49,6 +51,15 @@ describe('The json-tree directive', function () {
         var expandable = elem[0].querySelectorAll('json-node.expandable');
         expect(expandable.length).toBeGreaterThan(1);
         expect(expanded.length).toEqual(expandable.length);
+    });
+
+    it('should indicate which expandable nodes are empty', function () {
+        var html = expandedHtml;
+        var elem = angular.element(html);
+        compile(elem)(scope);
+        scope.$digest();
+        var empty = elem[0].querySelectorAll('json-node.empty');
+        expect(empty.length).toEqual(2);
     });
 
     it('should have no subnodes until click', function () {

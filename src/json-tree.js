@@ -112,6 +112,10 @@ angular.module('angular-json-tree', ['ajs.RecursiveDirectiveHelper'])
                     scope.isExpandable = true;
                     // Add expandable class for CSS usage
                     elem.addClass('expandable');
+                    // Add a class indicating an empty Object/Array (for removing expandable UI, if desired)
+                    if (Object.keys(scope.value).length < 1) {
+                      elem.addClass('empty');
+                    }
                     // Setup preview text
                     var isArray = utils.is(scope.value, 'Array');
                     scope.preview = isArray ? '[ ' : '{ ';
