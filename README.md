@@ -51,7 +51,7 @@ I was searching for a way to easily display the JSON results from an API endpoin
 
 ![Example Output](readme/example_output.png)
 
-This directive helps me with another problem while developing: visualizing JSON objects. Being able to break down JSON objects piece by piece has proven invaluably useful. To simplify that process, I threw together this website: [http://blog.alexwendland.com/angular-json-tree/](http://blog.alexwendland.com/angular-json-tree/).
+This directive helps me with another problem while developing: visualizing JSON objects. Being able to break down JSON objects piece by piece has proven invaluably useful. To simplify that process, I threw together this website: [http://awendland.github.io/angular-json-tree/](http://awendland.github.io/angular-json-tree/).
 
 ## Directive Configuration:
 These attributes are available for configuration on the directive:
